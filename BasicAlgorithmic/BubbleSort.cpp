@@ -1,10 +1,12 @@
-﻿//冒泡排序
-//算法思想：对n个数进行排序，需进行n-1趟排序，每次归为一个数。
-//          每次比较两个相邻的元素，如果他们的顺序错误，就把它们交换过来。
-//复杂度：O(N2)
+﻿/*
+冒泡排序
+算法思想：对n个数进行排序，需进行n-1趟排序，每次归为一个数。
+          每次比较两个相邻的元素，如果他们的顺序错误，就把它们交换过来。
+复杂度：O(N2)
 
-//优化：记录是否发生交换（true：是，false：否）
+优化：记录是否发生交换（true：是，false：否）
 
+*/
 #include <iostream>
 using namespace std;
 
@@ -36,15 +38,15 @@ void BubbleSort(int unsorted[],int n)
 int  main()
 {
     int unsorted[] = {3,6,1,4,5};
-    int n = sizeof(unsorted)/sizeof(int);
+    int length = sizeof(unsorted)/sizeof(int);
 
-    for(int i=0;i<n;++i)
+    for(int i=0;i<length;++i)
        cout<<unsorted[i]<<" ";
     cout<<endl;
 
-    BubbleSort(unsorted,n);
+    BubbleSort(unsorted,length);
 
-    for(int i=0;i<n;++i)
+    for(int i=0;i<length;++i)
         cout<<unsorted[i]<<" ";
     cout<<endl;
 
