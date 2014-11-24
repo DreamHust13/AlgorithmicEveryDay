@@ -1,9 +1,9 @@
-//ð������
-//�㷨˼�룺��n�����������������n-1������ÿ�ι�Ϊһ������
-//          ÿ�αȽ��������ڵ�Ԫ�أ�������ǵ�˳����󣬾Ͱ����ǽ���������
-//���Ӷȣ�O(N2)
+﻿//冒泡排序
+//算法思想：对n个数进行排序，需进行n-1趟排序，每次归为一个数。
+//          每次比较两个相邻的元素，如果他们的顺序错误，就把它们交换过来。
+//复杂度：O(N2)
 
-//�Ż�����¼�Ƿ���������true���ǣ�false����
+//优化：记录是否发生交换（true：是，false：否）
 
 #include <iostream>
 using namespace std;
@@ -14,7 +14,7 @@ void BubbleSort(int unsorted[],int n)
             
      while(flag)
     {
-        for(int i = 1; i < n; ++i)//n-1������
+        for(int i = 1; i < n; ++i)//n-1次排序
         {
             flag = false;
             for(int j=1;j<n-i;j++)
