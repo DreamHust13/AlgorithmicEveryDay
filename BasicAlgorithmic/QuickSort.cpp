@@ -33,7 +33,7 @@
 	1.数组大小，一定不能 void（int data[]）{int length = sizeof(data)/sizeof(int);}
 		因为传进来是指针，不能判断数组大小，所以参数中要有计算好的大小
 		
-	2.Partition()
+	2.Partition()算法理解！！！
 	
 */
 #include <cstdlib>
