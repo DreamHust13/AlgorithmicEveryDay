@@ -26,7 +26,7 @@ int main()
 		stack[++top]=data[i];
 		
 	//根据字符串长度是奇数还是偶数，找出需进行的字符串匹配的起始下标
-	if((len & 1) == 0)//奇数
+	if((len & 1) == 0)//奇数！！！位操作判断奇偶！！！
 		next = mid+1;
 	else
 		next = mid+2;
@@ -34,7 +34,7 @@ int main()
 	//开始匹配
 	for(i=next;i<len;++i)
 	{
-		if(data[i] != stack[top])
+		if(data[i] != stack[top])//！！！是i，不是next！！！
 			break;
         top--;
         //!!!不能写成一体的stack[top--]，只有匹配，才能出栈！！！
