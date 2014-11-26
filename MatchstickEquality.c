@@ -9,6 +9,15 @@
  *      故，A+B=C等式中，任意一个数不超过11111//！！！未想到多位数
  *  而最简单的枚举，若枚举A.B.C，O(N3)~~1000多秒，而只枚举A.B，C可以通过计算得出，O(N2)~~1秒
  *
+ *别样思路：int numCost[1000]={6, 2, 5, 5, 4, 5, 6, 3, 7, 6};   
+			for(i=10;i<100;i++)  
+				numCost[i]=numCost[i%10]+numCost[i/10];  
+			for(i=100;i<1000;i++)  
+				numCost[i]=numCost[i/100]+numCost[i%10]+numCost[i%100/10];  
+ 			for(i=0;i<1000;i++)  
+				for(j=0;j<1000;j++)  
+					if(i+j<1000&&numCost[i]+numCost[j]+numCost[i+j]+4==n)  
+						ans++;
  *问题：对于注意中的1.2,貌似并未验证。另，最高位不为0，貌似并不冲突
 */
 
