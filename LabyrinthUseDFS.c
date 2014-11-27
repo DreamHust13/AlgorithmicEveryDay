@@ -21,7 +21,8 @@ void dfs(int x,int y,int step)
                        {0,-1},//向左走
                        {-1,0},//向上走
                      };
-	int testx,testy;//尝试的下一坐标
+	int testx=x,testy=y;//尝试的下一坐标
+    int k;//循环控制变量
 	//判断是否到达终点
 	if(testx==endx && testy==endy)
 	{
@@ -47,7 +48,7 @@ void dfs(int x,int y,int step)
             //!!!注意DFS与BFS不同，不是每个点之入队一次，而是要将book还原
             book[testx][testy]=1;
             dfs(testx,testy,step+1);//!!!+1
-			book[testx][texty]=0;//尝试结束，取消该点标记
+			book[testx][testy]=0;//尝试结束，取消该点标记
         }	
 	}
 	return;
