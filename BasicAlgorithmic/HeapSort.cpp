@@ -38,7 +38,7 @@ void BuildMaxHeap(int *heapdata,int size)//建最大堆
 {
     int i;//循环控制变量
 
-    for(i=size/2;i>=1;--i)//从最后一个非叶节点开始调整
+    for(i=size/2;i>=1;--i)//从最后一个非叶节点开始调整//!!!大于号写成小于号，一直找不到!!!
         MaxHeapify(heapdata,i,size);
 }
 
