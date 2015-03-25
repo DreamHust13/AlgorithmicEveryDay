@@ -36,7 +36,7 @@
 	2.Partition()算法理解！！！
 	
 */
-#include <cstdlib>
+#include <algorithm>
 #include <stdexcept>
 #include <iostream>
 using namespace std;
@@ -48,12 +48,14 @@ int RandomInRange(int min, int max)
     return random;
 }
 
+/*
 void Swap(int* num1, int* num2)
 {
     int temp = *num1;
     *num1 = *num2;
     *num2 = temp;
 }
+*/
 
 int Partition(int data[], int length, int start, int end)
 {
@@ -63,7 +65,7 @@ int Partition(int data[], int length, int start, int end)
         throw new logic_error("Invalid Parameters");
 
     int index = RandomInRange(start, end);
-    Swap(&data[index], &data[end]);
+    swap(data[index], data[end]);
 
     int small = start - 1;
     for(index = start; index < end; ++ index)
@@ -72,14 +74,44 @@ int Partition(int data[], int length, int start, int end)
         {
             ++ small;
             if(small != index)
-                Swap(&data[index], &data[small]);
+                swap(data[index], data[small]);
         }
     }
 
     ++ small;
-    Swap(&data[small], &data[end]);
+    swap(data[small], data[end]);
 
     return small;
+}
+
+int Partion(int data[], int length, int start, int end)
+{//之前一直纠结的另一种Partition()实现方法，因为其用赋值替代了交换，所以更好。
+	if(data == NULL || length <= 0 || start < 0 || end >= length)
+		throw new logic_error("Invalid Parameters");
+		
+	int index = RandomInRange(start, end);
+	swap(data[index],data[end]);
+	int pleft = start;
+	int pright = end;
+	int temp = data[end];//保存基数的副本
+	
+	while(pleft < pright)
+	{
+		//!!注意顺序，因为基准为end，所以先从左向右遍历！！
+		//从左向右遍历，直到遇到大于temp的值
+		while(pleft < pright && data[pleft] <= temp)
+			pleft++;
+		if(pleft < pright)
+			data[pright--] = data[pleft];
+		//从右向左遍历，直到遇到小于temp的值
+		while(pleft < pright && data[pright] >= temp)
+			pright--;
+		if(pleft < pright)
+			data[pleft++] = data[pright];	
+	}
+	
+	data[pleft] = temp;
+	return pleft;	
 }
 
 void QuickSort(int unsorted[],int length,int start,int end)
