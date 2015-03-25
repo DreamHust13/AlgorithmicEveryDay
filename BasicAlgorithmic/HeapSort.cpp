@@ -38,6 +38,33 @@ void HeapAdjust(int a[], int i, int size)
 	}
 }
 
+/*
+void HeapAdjust(int a[], int i, int size)
+//堆调整非递归实现
+{
+	a[0] = a[i];//用空闲位置a[0]临时记录当前节点的值
+	int lchild = 2 * i;
+	int max = i;//临时变量,记录最大值的下标
+
+	while( lchild <= size )
+	{
+		if(lchild <= size && a[lchild] > a[max])//注意边界检查，包括size
+			max = lchild;
+		if((lchild + 1 <= size) && a[lchild+1] > a[max])
+			max = lchild+1;
+		if(max == i)
+			break;//无需调整
+		else
+		{
+			a[i] = a[max];//!!
+			i = max;//!!
+			lchild = i * 2; //!!
+		}		
+	}
+	a[i] = a[0];//!!被调整节点的值被放入最终位置
+}
+*/
+
 void BuildHeap(int a[], int size)//建堆
 {
 	for(int i = size/2; i >= 1; --i)//非叶节点最大序号值为size/2 
