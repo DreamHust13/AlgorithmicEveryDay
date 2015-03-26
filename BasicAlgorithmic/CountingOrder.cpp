@@ -25,7 +25,7 @@ void CountingSort(int data[], int size, int range)
 		count[data[i]]++;//此时，C[i]为data中i的个数
 		
 	//对于形成最后排序数字，两个注释部分的效果是一样的，二选一即可
-	/*
+/*法一：
 	int j=0;
 	for(i=0; i<=range; i++)
 	{
@@ -35,8 +35,8 @@ void CountingSort(int data[], int size, int range)
 			count[i]--;
 		}
 	}
-	*/
-	/*
+*/
+/*法二：
 	for(i=1; i<=range; i++)
 		count[i] += count[i-1];//此时，C[i]为data中不大于i的个数
 	for(i=size-1; i>=0; i--)
@@ -44,7 +44,7 @@ void CountingSort(int data[], int size, int range)
 		ordered[count[data[i]]-1] = data[i];//!!注意需要减1，因为数组从0开始
 		count[data[i]]--;
 	}
-	*/
+*/
 	for(i=0;i<size;++i)
         cout<< ordered[i] <<" ";
     cout<<endl;
