@@ -1,5 +1,5 @@
 /*
-	字符串全排列
+	字符串全排列【无/有重复字符】
 */
 #include "stdafx.h"
 #include <iostream>
@@ -9,6 +9,16 @@
 #include <cassert>
 using namespace std;
 //法一：
+bool isSwap(char *pBegin, char *pCh)
+{
+	char *p;
+	for(p=pBegin; p != pCh; p++)
+	{
+		if(*p == *pCh)
+			return false;
+	}
+	return true;
+}
 void Permutation(char* pStr, char* pBegin)
 {
 	assert(pStr && pBegin);
@@ -19,9 +29,12 @@ void Permutation(char* pStr, char* pBegin)
 	{
 		for(char* pCh = pBegin; *pCh != '\0'; pCh++)
 		{
-			swap(*pBegin,*pCh);
-			Permutation(pStr, pBegin+1);
-			swap(*pBegin,*pCh);
+			if(isSwap(pBegin,pCh))
+			{
+				swap(*pBegin,*pCh);
+				Permutation(pStr, pBegin+1);
+				swap(*pBegin,*pCh);
+			}
 		}
 	}
 }
